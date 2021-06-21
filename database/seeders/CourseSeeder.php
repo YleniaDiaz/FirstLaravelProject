@@ -14,22 +14,12 @@ class CourseSeeder extends Seeder
    */
   public function run()
   {
-    $course = new Course();
+    /*$course = new Course();
     $course->name = "Laravel";
     $course->description = "Framework de PHP";
     $course->category = "Desarrollo web";
-    $course->save();
+    $course->save();*/
 
-    $course2 = new Course();
-    $course2->name = "Java";
-    $course2->description = "Lenguaje de programación";
-    $course2->category = "Programación";
-    $course2->save();
-
-    $course3 = new Course();
-    $course3->name = "React.js";
-    $course3->description = "Framework de JS";
-    $course3->category = "Desarrollo web";
-    $course3->save();
+    Course::factory(50)->create(); //se crean 50 cursos aleatorios
   }
 }
