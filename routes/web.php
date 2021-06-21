@@ -23,9 +23,5 @@ Route::get('courses', [CourseController::class, 'index']);
 
 Route::get('courses/create', [CourseController::class, 'create']);
 
-/*Route::get('courses/{course}', function ($course) {
-  return "<h1>Bienvenido al curso: ${course}</h1>";
-});*/
-
 // el ? es para un param opcional
 Route::get('courses/{course}/{category?}', [CourseController::class, 'show']);
