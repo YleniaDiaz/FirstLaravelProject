@@ -23,6 +23,13 @@ class CourseController extends Controller
   //crear curso
   public function store(Request $request)
   {
+    //validar campos del formulario
+    $request->validate([
+      'name'=> 'required|max:10',
+      'category'=> 'required',
+      'description'=> 'required|min:10',
+    ]);
+
     $course = new Course();
     $course->name = $request->name;
     $course->category = $request->category;
@@ -49,13 +56,20 @@ class CourseController extends Controller
 
   public function update($id, Request $request)
   {
-    $course=Course::find($id);
+    //validar campos del formulario
+    $request->validate([
+      'name'=> 'required',
+      'category'=> 'required',
+      'description'=> 'required',
+    ]);
+
+    $course = Course::find($id);
     $course->name = $request->name;
     $course->category = $request->category;
     $course->description = $request->description;
 
     $course->save();
-    
+
     return view('courses.show', compact('course'));
   }
 }
