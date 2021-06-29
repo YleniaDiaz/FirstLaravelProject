@@ -1,8 +1,11 @@
 @extends('layouts.layout')
 
-@section('title', $course)
+@section('title', $course->name)
 
 @section('content')
-    <h1>Bienvenido al curso: {{$course}}</h1>
-    <?php if ($category) echo "<p>Categoría: ${category}"; ?>
+    <h1>Bienvenido al curso: {{$course->name}}</h1>
+    <p><strong>{{$course->category}}</strong></p>
+    <p>{{$course->description}}</p>
+
+    <a href="{{route('index.courses')}}">Volver a la lista de cursos</a>
 @endsection

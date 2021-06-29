@@ -19,9 +19,9 @@ use App\Http\Controllers\CourseController;
 
 Route::get('/', HomeController::class);
 
-Route::get('courses', [CourseController::class, 'index']);
+Route::get('courses', [CourseController::class, 'index'])->name('index.courses');
 
-Route::get('courses/create', [CourseController::class, 'create']);
+Route::get('courses/create', [CourseController::class, 'create'])->name('create.courses');
 
 // el ? es para un param opcional
-Route::get('courses/{course}/{category?}', [CourseController::class, 'show']);
+Route::get('courses/{id}', [CourseController::class, 'show'])->name('show.courses');
