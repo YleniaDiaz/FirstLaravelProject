@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreCourse;
 use App\Models\Course;
 use Illuminate\Http\Request;
 
@@ -21,21 +22,9 @@ class CourseController extends Controller
   }
 
   //crear curso
-  public function store(Request $request)
+  public function store(StoreCourse $request) //Valida los params directamente
   {
-    //validar campos del formulario
-    $request->validate([
-      'name'=> 'required|max:10',
-      'category'=> 'required',
-      'description'=> 'required|min:10',
-    ]);
-
-    $course = new Course();
-    $course->name = $request->name;
-    $course->category = $request->category;
-    $course->description = $request->description;
-
-    $course->save();
+    $course = Course::create($request->all());
 
     return redirect()->route('show.courses', $course->id);
   }
@@ -54,7 +43,7 @@ class CourseController extends Controller
     return view('courses.edit', compact('id'));
   }
 
-  public function update($id, Request $request)
+  public function update(Request $request, Course $course)
   {
     //validar campos del formulario
     $request->validate([
@@ -63,13 +52,8 @@ class CourseController extends Controller
       'description'=> 'required',
     ]);
 
-    $course = Course::find($id);
-    $course->name = $request->name;
-    $course->category = $request->category;
-    $course->description = $request->description;
-
-    $course->save();
-
+    $course->update($request->all());
+    
     return view('courses.show', compact('course'));
   }
 }

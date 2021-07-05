@@ -11,4 +11,8 @@ class Course extends Model
 
   //si se quiere modificar la tabla a la que apunta automaticamente el modelo
   //protected $table = "users";
+
+  //ASIGNACION MASIVA
+  //protected $fillable = ['name', 'category', 'description'];
+  protected $guarded = []; //ignora estos campos
 }

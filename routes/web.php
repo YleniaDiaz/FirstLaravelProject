@@ -31,4 +31,4 @@ Route::get('courses/{id}', [CourseController::class, 'show'])->name('show.course
 
 Route::get('courses/{id}/edit', [CourseController::class, 'edit'])->name('edit.courses');
 
-Route::put('course/{id}', [CourseController::class, 'update'])->name('update.courses');
+Route::put('course/{course}', [CourseController::class, 'update'])->name('update.courses');
