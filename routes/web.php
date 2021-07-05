@@ -19,18 +19,4 @@ use App\Http\Controllers\CourseController;
 
 Route::get('/', HomeController::class);
 
-Route::get('courses', [CourseController::class, 'index'])->name('index.courses');
-
-Route::get('courses/create', [CourseController::class, 'create'])->name('create.courses');
-
-//añadir curso
-Route::post('courses', [CourseController::class, 'store'])->name('store.courses');
-
-// el ? es para un param opcional
-Route::get('courses/{id}', [CourseController::class, 'show'])->name('show.courses');
-
-Route::get('courses/{id}/edit', [CourseController::class, 'edit'])->name('edit.courses');
-
-Route::put('course/{course}', [CourseController::class, 'update'])->name('update.courses');
-
-Route::delete('course/{course}', [CourseController::class, 'destroy'])->name('destroy.courses');
+Route::resource('course', CourseController::class); //->names('antiguoNombreRuta'); //para mantener el nombre de las rutas 

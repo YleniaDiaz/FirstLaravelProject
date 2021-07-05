@@ -4,13 +4,13 @@
 
 @section('content')
     <h1>Editar curso</h1>
-    <form action="{{ route('update.courses', $id) }}" method="post">
+    <form action="{{ route('course.update', $course) }}" method="post">
         @csrf
         @method('put')
         <label>
             Nombre:
             <br>
-            <input type="text" name="name" value="{{ old('name', $id->name) }}" />
+            <input type="text" name="name" value="{{ old('name', $course->name) }}" />
         </label>
         <br>
         @error('name')
@@ -20,7 +20,7 @@
         <label>
             Categoría:
             <br>
-            <input type="text" name="category" value="{{ old('category', $id->category) }}" />
+            <input type="text" name="category" value="{{ old('category', $course->category) }}" />
         </label>
         <br>
         @error('category')
@@ -30,7 +30,7 @@
         <label>
             Descripción:
             <br>
-            <textarea name="description" rows="5">{{ old('description', $id->description) }}</textarea>
+            <textarea name="description" rows="5">{{ old('description', $course->description) }}</textarea>
         </label>
         <br>
         @error('description')

@@ -26,7 +26,7 @@ class CourseController extends Controller
   {
     $course = Course::create($request->all());
 
-    return redirect()->route('show.courses', $course->id);
+    return redirect()->route('course.show', $course->id);
   }
 
   //muestra pagina curso especifico
@@ -38,9 +38,9 @@ class CourseController extends Controller
     return view('courses.show', compact('course'));
   }
 
-  public function edit(Course $id) //busca directamente el curso usando el id
+  public function edit(Course $course) //busca directamente el curso usando el id
   {
-    return view('courses.edit', compact('id'));
+    return view('courses.edit', compact('course'));
   }
 
   public function update(Request $request, Course $course)
@@ -60,6 +60,6 @@ class CourseController extends Controller
   public function destroy(Course $course)
   {
     $course->delete();
-    return redirect()->route('index.courses');
+    return redirect()->route('course.index');
   }
 }

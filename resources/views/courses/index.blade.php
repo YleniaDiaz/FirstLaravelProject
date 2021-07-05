@@ -4,10 +4,10 @@
 
 @section('content')
     <h1>Bienvenido a la página de cursos</h1>
-    <a href="{{route('create.courses')}}" rel="noopener noreferrer">Crear curso</a>
+    <a href="{{route('course.create')}}" rel="noopener noreferrer">Crear curso</a>
     <ul>
       @foreach ($courses as $course)
-          <li><a href="{{route('show.courses', $course->id)}}">{{$course->name}}</a></li>
+          <li><a href="{{route('course.show', $course)}}">{{$course->name}}</a></li>
       @endforeach
     </ul>
     {{$courses->links()}}
