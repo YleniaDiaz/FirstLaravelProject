@@ -47,13 +47,19 @@ class CourseController extends Controller
   {
     //validar campos del formulario
     $request->validate([
-      'name'=> 'required',
-      'category'=> 'required',
-      'description'=> 'required',
+      'name' => 'required',
+      'category' => 'required',
+      'description' => 'required',
     ]);
 
     $course->update($request->all());
-    
+
     return view('courses.show', compact('course'));
+  }
+
+  public function destroy(Course $course)
+  {
+    $course->delete();
+    return redirect()->route('index.courses');
   }
 }

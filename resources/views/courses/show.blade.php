@@ -11,4 +11,11 @@
     <br>
     <br>
     <a href="{{route('index.courses')}}">Volver a la lista de cursos</a>
+    <br>
+    <br>
+    <form action="{{route('destroy.courses', $course)}}" method="POST">
+      @csrf
+      @method('delete')
+      <button type="submit">Eliminar</button>
+    </form>
 @endsection
