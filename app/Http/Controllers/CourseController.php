@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreCourse;
 use App\Models\Course;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CourseController extends Controller
 {
@@ -30,9 +31,9 @@ class CourseController extends Controller
   }
 
   //muestra pagina curso especifico
-  public function show($id)
+  public function show(Course $course)
   {
-    $course = Course::find($id); //buscar curso por id
+    //$course = Course::find($id); //buscar curso por id
 
     //compact() -> devuelve array ['id'->$var] (si el id y el nombre var es el mismo)
     return view('courses.show', compact('course'));
@@ -52,7 +53,12 @@ class CourseController extends Controller
       'description' => 'required',
     ]);
 
-    $course->update($request->all());
+    $course->name = $request->name;
+    $course->slug=Str::slug($request->name, '-');
+    $course->category = $request->category;
+    $course->description = $request->description;
+
+    $course->save();
 
     return view('courses.show', compact('course'));
   }

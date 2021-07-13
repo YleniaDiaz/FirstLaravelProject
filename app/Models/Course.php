@@ -15,4 +15,9 @@ class Course extends Model
   //ASIGNACION MASIVA
   //protected $fillable = ['name', 'category', 'description'];
   protected $guarded = []; //ignora estos campos
+
+  public function getRouteKeyName()
+  {
+    return 'slug';
+  }
 }

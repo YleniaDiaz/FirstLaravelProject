@@ -19,4 +19,6 @@ use App\Http\Controllers\CourseController;
 
 Route::get('/', HomeController::class);
 
-Route::resource('course', CourseController::class); //->names('antiguoNombreRuta'); //para mantener el nombre de las rutas 
+//->names('antiguoNombreRuta'); //para mantener el nombre de las rutas 
+//->parameters('nuevaRuta' => 'nombreVariable'); 
+Route::resource('course', CourseController::class);
