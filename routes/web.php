@@ -5,9 +5,7 @@ use Illuminate\Support\Facades\Route;
 //import controllers
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CourseController;
-
-use App\Mail\ContactMailable;
-use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,9 +26,6 @@ Route::resource('course', CourseController::class);
 
 Route::view('/about-us', 'aboutUs')->name('aboutUs');
 
-Route::get('contact', function(){
-  $mail = new ContactMailable();
-  Mail::to('ylenia.d.23@gmail.com')->send($mail);
+Route::get('contact', [ContactController::class, 'index'])->name('contact.index');
 
-  return "Email enviado!";
-});
+Route::post('contact', [ContactController::class, 'store'])->name('contact.store');

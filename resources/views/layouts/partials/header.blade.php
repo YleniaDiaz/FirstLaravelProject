@@ -13,6 +13,10 @@
                 <a href="{{ route('aboutUs') }}"
                     class="{{ request()->routeIs('aboutUs') ? 'active' : '' }}">Nosotros</a>
             </li>
+            <li>
+                <a href="{{ route('contact.index') }}"
+                    class="{{ request()->routeIs('contact.*') ? 'active' : '' }}">Contacto</a>
+            </li>
         </ul>
     </nav>
 </header>
